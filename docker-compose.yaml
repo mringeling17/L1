@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  l1:
+    build: .
+    container_name: l1
+    volumes:
+      - .:/app
+    tty: true  # Mantiene el contenedor en ejecución en segundo plano
+    networks:
+      - monitor_network  # Añadir el servicio a la red
+
+networks:
+  monitor_network:
+    driver: bridge  # Usa el controlador de red 'bridge' para crear una red aislada
